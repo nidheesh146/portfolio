@@ -88,8 +88,7 @@
                                 <ul class="nav navbar-nav">
                                     <li class="active"><a href="#header"><i class="fa fa-home"></i> <span>Home</span></a></li>
                                     <li><a href="#portfolio"><i class="fa fa-bookmark"></i> Portfolio</a></li>
-                                    <li><a href="#services"><i class="fa fa-bullhorn"></i> Me</a></li>
-                                    <li><a href="#testimonials"><i class="fa fa-thumbs-up"></i> Tetimonials</a></li>
+                                    <li><a href="#skills"><i class="fa fa-bullhorn"></i> Me</a></li>
                                     <li><a href="#contact"><i class="fa fa-phone-square"></i> Contact</a></li>
                                 </ul>
                             </div>  <!-- /.navbar-collapse -->
@@ -97,10 +96,19 @@
                     </div>
                 </header>	<!-- site-header -->
                 
+                <style>
+
+                    .pro-name{
+                        font-family:serif;
+                    }
+                    .tagline{
+                        font-family:serif;
+                    }
+                </style>
                 <div class="middle text-center clearfix">
                     <div class="container">
-                        <h1 class="pro-name">Web <!-- <span style="color: #71b644;" > -->Developer<!-- </span> --></h1>
-                        <p class="tagline" style="color: aqua;">Going beyond</p>
+                        <h1 class="pro-name">Hi, I'm <!-- <span style="color: #71b644;" > -->Nidheesh KS<!-- </span> --></h1>
+                        <p class="tagline">Going beyond</p>
                         <div class="skills">
 
                         </div>  <!-- skills -->
@@ -114,21 +122,102 @@
             </div>  <!-- overlay-1 -->
         </div>  <!-- content-block -->
 
+        <br><br>
+
+<section id="skills" class="container py-5">
+  <h2 class="text-center mb-5 block-heading cleafix" style="color: rgb(17, 108, 78);">Skills</h2>
+  <div class="row g-4">
+
+    <!-- Skill Card -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card skill-card h-100 text-center p-4">
+        <i class="fa fa-code skill-icon mb-3"></i>
+        <h5>JavaScript</h5>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card skill-card h-100 text-center p-4">
+        <i class="fa fa-html5 skill-icon mb-3"></i>
+        <h5>HTML5 & CSS3</h5>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card skill-card h-100 text-center p-4">
+        <i class="fa fa-terminal skill-icon mb-3"></i>
+        <h5>Python</h5>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card skill-card h-100 text-center p-4">
+        <i class="fa fa-cogs skill-icon mb-3"></i>
+        <h5>Django</h5>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+  .skill-card {
+    border: none;
+ 
+    height: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+  }
+  .skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  }
+  .skill-icon {
+    font-size: 2.5rem;
+    color: #007bff;
+  }
+</style>
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<br><br>
+        
+
         <div class="content-block text-center" id="portfolio">
             <header class="block-heading cleafix">
                 <h1>Projects</h1>
                 <!-- <p>Take a look at some of my recent products</p> -->
             </header>
 
+            <style>
+                /* Always show the figcaption on mobile */
+@media (max-width: 768px) {
+    .portfolio-item figcaption {
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: static !important; /* if it’s being moved */
+        background: rgba(0,0,0,0.6); /* optional background */
+    }
+
+    .portfolio-item .icon-links {
+        display: block !important;
+        text-align: center; /* optional for alignment */
+    }
+}
+
+            </style>
             <div class="isotope portfolio-items">
               <div class="element-item grid">
-    <div class="effect-zoe">
+    <div class="portfolio-item effect-zoe">
         <!-- Trigger (Note: data-toggle instead of data-bs-toggle) -->
         <a href="#" data-toggle="modal" data-target="#imageModal">
-            <img class="img-responsive" alt="Portfolio" src="{% static 'img/work1.jpg' %}">
+            <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/5OryE1oH0wYQD50vmzCopt7cI2Ny-m-M59tObMMPXtA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWct/Y2RuLnRoZXB1Ymxp/dmUuY29tL2ZpbHRl/cnM6Zm9ybWF0KHdl/YnApL2luZHVzdHJ5/LXdpcmVkL21lZGlh/L3Bvc3RfYXR0YWNo/bWVudHMvd3AtY29u/dGVudC91cGxvYWRz/LzIwMjQvMDgvVGhl/LUZ1dHVyZS1vZi1B/SS1pbi1TbWFydC1I/b21lcy5qcGc">
         </a>
         <figcaption>
-            <h5 class="hidden-xs">Ai Enhanced <span>Smart Living System</span></h5>
+            <h5 >Ai Enhanced Smart Living System <span></span></h5>
             <p class="icon-links">
                 <a href="#" data-toggle="modal" data-target="#imageModal">
                     <i class="fa fa-image"></i>
@@ -138,12 +227,22 @@
     </div>
 </div>
 
+<style>
+    .modal-body img {
+    max-width: 90%;   /* Scale to 90% of modal width */
+    height: auto;     /* Keep aspect ratio */
+}
+
+</style>
+
+
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content bg-transparent border-0">
       <div class="modal-body p-0">
-        <img src="{% static 'img/work1.jpg' %}" class="img-fluid" alt="Full Size">
+
+        <img src="{% static 'img/ai.jpg' %}" class="img-fluid" alt="Full Size">
       </div>
     </div>
   </div>
@@ -151,9 +250,9 @@
 
                 <div class="element-item grid">
                     <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="{% static 'img/work2.jpg' %}">
+                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/fnYKebuht-54bLzTYXeKt9MoFRKCRYNRay0Mv2SwSY0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTgz/MDA0Mjc0Ni9waG90/by9kb2N1bWVudC1t/YW5hZ2VtZW50LXN5/c3RlbS1kbXMtd2l0/aC1hcnJhbmdlLWZv/bGRlci1hbmQtZmls/ZXMtaWNvbnMtbWFu/LXNldHVwLXN0b3Jh/Z2UtYmFja3VwLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz10/OG9BQU8xNmo2Zk1o/bGVBWUpFWG01cFNY/RklEWnJFRzZzWUpr/dl9TZG9zPQ">
                         <figcaption>
-                            <h5 class="hidden-xs">IT Employee Management System<span></span></h5>
+                            <h5 >IT Employee Management System<span></span></h5>
                             <p class="icon-links">
                                 <a href="https://github.com/nidheesh146/IT-management-system.git"><i class="fa fa-github"></i></a>
                                
@@ -163,10 +262,10 @@
                 </div>
                 <div class="element-item grid">
                     <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="{% static 'img/work3.png' %}">
+                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/Q7AQktDyDBO8Oi5S7KNjHJV1Tz4164GfaTJOvVOa7rg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/aGFzaG1pY3JvLmNv/bS9ibG9nL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIzLzAzL3R1/aXRpb24tNjk2eDM3/Ny5wbmc">
                         <figcaption>
-                            <h5 class="hidden-xs">Tution Management  
- <span>Website</span></h5>
+                            <h5>Tution Management Website
+ <span></span></h5>
                             <p class="icon-links">
                                 <a href="https://github.com/nidheesh146/Tution-Center-Management-system.git"><i class="fa fa-github"></i></a>
                                 
@@ -176,10 +275,10 @@
                 </div>
                 <div class="element-item grid">
                     <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="{% static 'img/work7.jpg' %}">
+                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/A7thdLPieL_5dR1X-zHi3Emc5XnYwG0I6d2pnEjS7Zc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9vcGVu/c291cmNlLmNvbS9z/aXRlcy9kZWZhdWx0/L2ZpbGVzL3N0eWxl/cy9hcnRpY2xlX3Rl/YXNlci9wdWJsaWMv/bGVhZC1pbWFnZXMv/ZW1haWxfY2hhdF9j/b21tdW5pY2F0aW9u/X21lc3NhZ2UucG5n/P2l0b2s9T19ObUNF/ZGE">
                         <figcaption>
-                            <h5 class="hidden-xs">Public and One on One 
- <span>Chat system </span></h5>
+                            <h5 >Public and One on One Chat system
+ <span> </span></h5>
                             <p class="icon-links">
                                 <a href="https://github.com/nidheesh146/Public-Chat-system.git"><i class="fa fa-github"></i></a>
                             
@@ -189,9 +288,9 @@
                 </div>
                 <div class="element-item grid">
                     <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="{% static 'img/work8.png' %}">
+                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/xSZDDKo_2JVk7KlYAAHMZEHsdCO4XKT2JPprdjEE-4g/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzVk/MzIyNWE2ODQ2OTQx/MDAwMTNjMmE0Yy9h/ODVlOTc2Ny0yOGYy/LTQ2ZmItYmJhMS0w/Njk3MTc4MDc0MzAv/d2hpdGUrJTI4aW52/ZXJ0JTI5K2tleWxv/Z28rc2lnbi5qcGc">
                         <figcaption>
-                            <h5 class="hidden-xs">Campus Management <span>System</span></h5>
+                            <h5>Campus Management System <span></span></h5>
                             <p class="icon-links">
                                 <a href="https://github.com/nidheesh146/campus-management-system.git"><i class="fa fa-github"></i></a>
                                
@@ -201,9 +300,9 @@
                 </div>
                 <div class="element-item grid">
                     <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="{% static 'img/work4.jpg' %}">
+                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/qfwwIItqmAY8WxXmnBagrPbp3e1EtdAlis__uoRnvWA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI4/MTc5MTE5NC92ZWN0/b3IvdmlkZW8tY2Fs/bC1zY3JlZW4tdGVt/cGxhdGUtc3RyZWFt/LXdlYi1jaGF0dGlu/Zy1vbmxpbmUtbWVl/dGluZy1mcmllbmRz/LXZpZGVvLWNoYXQt/Y29uZmVyZW5jZS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/YjhkdUZzUW5jdjRl/YnpCV0ROMGh0aDZR/RzRIcjNVUjRadmFv/X05Wb2RPRT0">
                         <figcaption>
-                            <h5 class="hidden-xs">Video Call <span>web Application</span></h5>
+                            <h5 >Video Call web Application<span></span></h5>
                             <p class="icon-links">
                                 <a href="https://github.com/nidheesh146/video-call-project.git"><i class="fa fa-github"></i></a>
                                
@@ -363,7 +462,7 @@
                                                     <div class="sqaure-nebir"></div>
                                                     <i class="fa fa-map-marker"></i>
                                                 </div>
-                                                <p><strong> Address:</strong> Kappil, Mundur, Palakkad, Kerala
+                                                <p><strong> Address:</strong>Mundur, Palakkad, Kerala
                                                 </p>
                                             </div>
                                             <div class="clearfix">
@@ -387,7 +486,7 @@
                                 </div>
                                 <div class="row">
                                     <ul class="social-box">
-                                        <li><a class="linkedin-icon" href="https://nidheesh146.github.io/personal-website/"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a class="linkedin-icon" href="http://linkedin.com/in/nidheesh-ks-33017a234"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -395,7 +494,7 @@
                     </div>
                 </div>	<!-- block-content -->
             </div>	<!-- overlay-3 -->
-        </div>	content-block -->
+        </div>	
 
         <footer id="site-footer">
             <div class="container">
