@@ -96,15 +96,84 @@
                     </div>
                 </header>	<!-- site-header -->
                 
-                <style>
+               <style>
+.pro-name {
+    font-family: serif;
+    font-size: clamp(1.5rem, 4vw, 3rem); /* Responsive font size */
+    line-height: 1.2;
+    margin: 0.5rem 0;
+}
 
-                    .pro-name{
-                        font-family:serif;
-                    }
-                    .tagline{
-                        font-family:serif;
-                    }
-                </style>
+.tagline {
+    font-family: serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Responsive font size */
+    line-height: 1.4;
+    margin: 0.25rem 0;
+}
+
+/* Media queries for fine-tuning */
+@media screen and (max-width: 480px) {
+    .pro-name {
+        font-size: 1.8rem;
+        text-align: center;
+        word-wrap: break-word;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+        text-align: center;
+        word-wrap: break-word;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .pro-name {
+        font-size: 2.2rem;
+    }
+    
+    .tagline {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .pro-name {
+        font-size: 2.5rem;
+    }
+    
+    .tagline {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .pro-name {
+        font-size: 3rem;
+    }
+    
+    .tagline {
+        font-size: 1.5rem;
+    }
+}
+
+/* Additional responsive utilities */
+.pro-name, .tagline {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* For very small screens */
+@media screen and (max-width: 320px) {
+    .pro-name {
+        font-size: 3.5rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+}
+</style>
                 <div class="middle text-center clearfix">
                     <div class="container">
                         <h1 class="pro-name">Hi, I'm <!-- <span style="color: #71b644;" > -->Nidheesh KS<!-- </span> --></h1>
@@ -129,12 +198,13 @@
   <div class="row g-4">
 
     <!-- Skill Card -->
-    <div class="col-sm-6 col-md-4 col-lg-3">
+     <div class="col-sm-6 col-md-4 col-lg-3">
       <div class="card skill-card h-100 text-center p-4">
         <i class="fa fa-code skill-icon mb-3"></i>
-        <h5>JavaScript</h5>
+        <h5>Bootstrap</h5>
       </div>
     </div>
+    
 
     <div class="col-sm-6 col-md-4 col-lg-3">
       <div class="card skill-card h-100 text-center p-4">
@@ -157,6 +227,12 @@
       </div>
     </div>
 
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card skill-card h-100 text-center p-4">
+        <i class="fa fa-code skill-icon mb-3"></i>
+        <h5>JavaScript</h5>
+      </div>
+    </div>
   </div>
 </section>
 
