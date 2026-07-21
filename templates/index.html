@@ -1,626 +1,607 @@
-<!DOCTYPE html>
 {% load static %}
-<html lang="en-us">
-    <head>
-    	<title>Developer</title>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-		<link rel="stylesheet" href="{% static 'css/owl.theme.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-		<link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-        <link href='http://fonts.googleapis.com/css?family=Oswald:300,400' rel='stylesheet'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
-        <link href="http://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Milonga' rel='stylesheet' type='text/css'>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nidheesh KS | Portfolio</title>
     
-<!-- Bootstrap 4 CSS -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- jQuery, Popper.js, and Bootstrap 4 JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: rgba(255, 255, 255, 0.03);
+            --surface-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --accent-gradient-2: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            --glow-color: rgba(79, 172, 254, 0.4);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        <style>
-        .messages {
-  list-style: none;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid green;
-  color: green;
-  background-color: #e0ffe0;
-  border-radius: 4px;
-}
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
+        /* Typography */
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: var(--surface-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--surface-border);
+            border-radius: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--surface-border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 40vw;
+            height: 40vw;
+            background: var(--glow-color);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #000;
+            box-shadow: 0 4px 15px var(--glow-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--glow-color);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(79, 172, 254, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            group;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11, 15, 25, 0.9) 0%, rgba(11, 15, 25, 0.2) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-overlay h3 {
+            transform: translateY(0);
+        }
+
+        .project-links a {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            color: #4facfe;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--surface-border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4facfe;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(79, 172, 254, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #4facfe;
+        }
+
+        /* Messages */
+        .messages-container {
+            position: fixed;
+            top: 5rem;
+            right: 2rem;
+            z-index: 2000;
+        }
+
+        .message-alert {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.3s ease-out;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--surface-border);
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Mobile menu can be added later if needed */
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .project-overlay {
+                opacity: 1;
+                background: linear-gradient(to top, rgba(11, 15, 25, 0.95) 0%, transparent 100%);
+            }
+            .project-overlay h3 {
+                transform: translateY(0);
+            }
+        }
     </style>
-    </head>
-    <body>
-        <div class="content-block" id="header">
-        
+</head>
+<body>
 
-            <div id="overlay-1">
-                <header id="site-header" class="clearfix">
-                    <div class="pull-left">
-                        <h1><a href="#">Developer</a></h1>
-                    </div>
-
-                        {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
-<script>
-  // Automatically remove messages after 5 seconds (5000 milliseconds)
-  setTimeout(function() {
-    const messages = document.querySelector('.messages');
-    if (messages) {
-      messages.style.transition = 'opacity 0.5s ease';
-      messages.style.opacity = '0';
-
-      // Optional: remove the element from the DOM after fade-out
-      setTimeout(() => messages.remove(), 500);
-    }
-  }, 5000);
-</script>
-
-                    <div class="pull-right">
-                        <nav class="navbar site-nav" role="navigation">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                    <i class="fa fa-bars fa-2x"></i>
-                                </button>
-                            </div>
-
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <li class="active"><a href="#header"><i class="fa fa-home"></i> <span>Home</span></a></li>
-                                    <li><a href="#portfolio"><i class="fa fa-bookmark"></i> Portfolio</a></li>
-                                    <li><a href="#skills"><i class="fa fa-bullhorn"></i> Me</a></li>
-                                    <li><a href="#contact"><i class="fa fa-phone-square"></i> Contact</a></li>
-                                </ul>
-                            </div>  <!-- /.navbar-collapse -->
-                        </nav>
-                    </div>
-                </header>	<!-- site-header -->
-                
-               <style>
-.pro-name {
-    font-family: serif;
-    font-size: clamp(1.5rem, 4vw, 3rem); /* Responsive font size */
-    line-height: 1.2;
-    margin: 0.5rem 0;
-}
-
-.tagline {
-    font-family: serif;
-    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Responsive font size */
-    line-height: 1.4;
-    margin: 0.25rem 0;
-}
-
-/* Media queries for fine-tuning */
-@media screen and (max-width: 480px) {
-    .pro-name {
-        font-size: 1.8rem;
-        text-align: center;
-        word-wrap: break-word;
-    }
-    
-    .tagline {
-        font-size: 1.1rem;
-        text-align: center;
-        word-wrap: break-word;
-    }
-}
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    .pro-name {
-        font-size: 2.2rem;
-    }
-    
-    .tagline {
-        font-size: 1.3rem;
-    }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .pro-name {
-        font-size: 2.5rem;
-    }
-    
-    .tagline {
-        font-size: 1.4rem;
-    }
-}
-
-@media screen and (min-width: 1025px) {
-    .pro-name {
-        font-size: 3rem;
-    }
-    
-    .tagline {
-        font-size: 1.5rem;
-    }
-}
-
-/* Additional responsive utilities */
-.pro-name, .tagline {
-    max-width: 100%;
-    overflow-wrap: break-word;
-    hyphens: auto;
-}
-
-/* For very small screens */
-@media screen and (max-width: 320px) {
-    .pro-name {
-        font-size: 3.5rem;
-    }
-    
-    .tagline {
-        font-size: 1rem;
-    }
-}
-</style>
-                <div class="middle text-center clearfix">
-                    <div class="container">
-                        <h1 class="pro-name">Hi, I'm <!-- <span style="color: #71b644;" > -->Nidheesh KS<!-- </span> --></h1>
-                        <p class="tagline">Software Developer/Fullstack Developer</p>
-                        <div class="skills">
-
-                        </div>  <!-- skills -->
-                        <a href="#contact" target="_blank" class="btn btn-lg btn-hire wow animated zoomIn">Message Me</a>
-                    </div>  <!-- container -->
-                </div>  <!-- middle -->
-                
-                <div class="bottom text-center">
-                    <a href="#portfolio"><i class="fa fa-angle-down fa-3x pulse"></i></a>
-                </div>
-            </div>  <!-- overlay-1 -->
-        </div>  <!-- content-block -->
-
-        <br><br>
-
-<section id="skills" class="container py-5">
-  <h2 class="text-center mb-5 block-heading cleafix" style="color: rgb(17, 108, 78);">Skills</h2>
-  <div class="row g-4">
-
-    <!-- Skill Card -->
-     <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card skill-card h-100 text-center p-4">
-        <i class="fa fa-code skill-icon mb-3"></i>
-        <h5>Bootstrap</h5>
-      </div>
+    {% if messages %}
+    <div class="messages-container" id="messageBox">
+        {% for message in messages %}
+        <div class="message-alert {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
     </div>
-    
+    <script>
+        setTimeout(() => {
+            const msgBox = document.getElementById('messageBox');
+            if (msgBox) {
+                msgBox.style.opacity = '0';
+                setTimeout(() => msgBox.remove(), 500);
+            }
+        }, 5000);
+    </script>
+    {% endif %}
 
-    <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card skill-card h-100 text-center p-4">
-        <i class="fa fa-html5 skill-icon mb-3"></i>
-        <h5>HTML5 & CSS3</h5>
-      </div>
-    </div>
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">NK<span class="text-gradient">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card skill-card h-100 text-center p-4">
-        <i class="fa fa-terminal skill-icon mb-3"></i>
-        <h5>Python</h5>
-      </div>
-    </div>
+    <section id="home" class="hero container">
+        <div class="hero-content">
+            <p style="color: #4facfe; font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px;">WELCOME TO MY WORLD</p>
+            <h1>Hi, I'm <br><span class="text-gradient">Nidheesh KS</span></h1>
+            <p>A passionate Software & Fullstack Developer building modern, scalable web applications and intuitive digital experiences.</p>
+            <a href="#contact" class="btn btn-primary">Let's Talk <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+    </section>
 
-    <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card skill-card h-100 text-center p-4">
-        <i class="fa fa-cogs skill-icon mb-3"></i>
-        <h5>Django</h5>
-      </div>
-    </div>
-
-    <div class="col-sm-6 col-md-4 col-lg-3">
-      <div class="card skill-card h-100 text-center p-4">
-        <i class="fa fa-code skill-icon mb-3"></i>
-        <h5>JavaScript</h5>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Styles -->
-<style>
-  .skill-card {
-    border: none;
- 
-    height: 50px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #fff;
-  }
-  .skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-  }
-  .skill-icon {
-    font-size: 2.5rem;
-    color: #007bff;
-  }
-</style>
-
-<!-- FontAwesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<br><br>
-        
-
-        <div class="content-block text-center" id="portfolio">
-            <header class="block-heading cleafix">
-                <h1>Projects</h1>
-                <!-- <p>Take a look at some of my recent products</p> -->
-            </header>
-
-            <style>
-                /* Always show the figcaption on mobile */
-@media (max-width: 768px) {
-    .portfolio-item figcaption {
-        opacity: 1 !important;
-        visibility: visible !important;
-        position: static !important; /* if it’s being moved */
-        background: rgba(0,0,0,0.6); /* optional background */
-    }
-
-    .portfolio-item .icon-links {
-        display: block !important;
-        text-align: center; /* optional for alignment */
-    }
-}
-
-            </style>
-            <div class="isotope portfolio-items">
-              <div class="element-item grid">
-    <div class="portfolio-item effect-zoe">
-        <!-- Trigger (Note: data-toggle instead of data-bs-toggle) -->
-        <a href="#" data-toggle="modal" data-target="#imageModal">
-            <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/5OryE1oH0wYQD50vmzCopt7cI2Ny-m-M59tObMMPXtA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWct/Y2RuLnRoZXB1Ymxp/dmUuY29tL2ZpbHRl/cnM6Zm9ybWF0KHdl/YnApL2luZHVzdHJ5/LXdpcmVkL21lZGlh/L3Bvc3RfYXR0YWNo/bWVudHMvd3AtY29u/dGVudC91cGxvYWRz/LzIwMjQvMDgvVGhl/LUZ1dHVyZS1vZi1B/SS1pbi1TbWFydC1I/b21lcy5qcGc">
-        </a>
-        <figcaption>
-            <h5 >Ai Enhanced Smart Living System <span></span></h5>
-            <p class="icon-links">
-                <a href="#" data-toggle="modal" data-target="#imageModal">
-                    <i class="fa fa-image"></i>
-                </a>
-            </p>
-        </figcaption>
-    </div>
-</div>
-
-<style>
-    .modal-body img {
-    max-width: 90%;   /* Scale to 90% of modal width */
-    height: auto;     /* Keep aspect ratio */
-}
-
-</style>
-
-
-<!-- Bootstrap Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content bg-transparent border-0">
-      <div class="modal-body p-0">
-
-        <img src="{% static 'img/ai.jpg' %}" class="img-fluid" alt="Full Size">
-      </div>
-    </div>
-  </div>
-</div>
-
-                <div class="element-item grid">
-                    <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/fnYKebuht-54bLzTYXeKt9MoFRKCRYNRay0Mv2SwSY0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTgz/MDA0Mjc0Ni9waG90/by9kb2N1bWVudC1t/YW5hZ2VtZW50LXN5/c3RlbS1kbXMtd2l0/aC1hcnJhbmdlLWZv/bGRlci1hbmQtZmls/ZXMtaWNvbnMtbWFu/LXNldHVwLXN0b3Jh/Z2UtYmFja3VwLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz10/OG9BQU8xNmo2Zk1o/bGVBWUpFWG01cFNY/RklEWnJFRzZzWUpr/dl9TZG9zPQ">
-                        <figcaption>
-                            <h5 >IT Employee Management System<span></span></h5>
-                            <p class="icon-links">
-                                <a href="https://github.com/nidheesh146/IT-management-system.git"><i class="fa fa-github"></i></a>
-                               
-                            </p>
-                        </figcaption>
-                    </div>
-                </div>
-                <div class="element-item grid">
-                    <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/Q7AQktDyDBO8Oi5S7KNjHJV1Tz4164GfaTJOvVOa7rg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/aGFzaG1pY3JvLmNv/bS9ibG9nL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIzLzAzL3R1/aXRpb24tNjk2eDM3/Ny5wbmc">
-                        <figcaption>
-                            <h5>Tution Management Website
- <span></span></h5>
-                            <p class="icon-links">
-                                <a href="https://github.com/nidheesh146/Tution-Center-Management-system.git"><i class="fa fa-github"></i></a>
-                                
-                            </p>
-                        </figcaption>
-                    </div>
-                </div>
-                <div class="element-item grid">
-                    <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/A7thdLPieL_5dR1X-zHi3Emc5XnYwG0I6d2pnEjS7Zc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9vcGVu/c291cmNlLmNvbS9z/aXRlcy9kZWZhdWx0/L2ZpbGVzL3N0eWxl/cy9hcnRpY2xlX3Rl/YXNlci9wdWJsaWMv/bGVhZC1pbWFnZXMv/ZW1haWxfY2hhdF9j/b21tdW5pY2F0aW9u/X21lc3NhZ2UucG5n/P2l0b2s9T19ObUNF/ZGE">
-                        <figcaption>
-                            <h5 >Public and One on One Chat system
- <span> </span></h5>
-                            <p class="icon-links">
-                                <a href="https://github.com/nidheesh146/Public-Chat-system.git"><i class="fa fa-github"></i></a>
-                            
-                            </p>
-                        </figcaption>
-                    </div>
-                </div>
-                <div class="element-item grid">
-                    <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/xSZDDKo_2JVk7KlYAAHMZEHsdCO4XKT2JPprdjEE-4g/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzVk/MzIyNWE2ODQ2OTQx/MDAwMTNjMmE0Yy9h/ODVlOTc2Ny0yOGYy/LTQ2ZmItYmJhMS0w/Njk3MTc4MDc0MzAv/d2hpdGUrJTI4aW52/ZXJ0JTI5K2tleWxv/Z28rc2lnbi5qcGc">
-                        <figcaption>
-                            <h5>Campus Management System <span></span></h5>
-                            <p class="icon-links">
-                                <a href="https://github.com/nidheesh146/campus-management-system.git"><i class="fa fa-github"></i></a>
-                               
-                            </p>
-                        </figcaption>
-                    </div>
-                </div>
-                <div class="element-item grid">
-                    <div class="portfolio-item effect-zoe">
-                        <img class="img-responsive" alt="Portfolio" src="https://imgs.search.brave.com/qfwwIItqmAY8WxXmnBagrPbp3e1EtdAlis__uoRnvWA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI4/MTc5MTE5NC92ZWN0/b3IvdmlkZW8tY2Fs/bC1zY3JlZW4tdGVt/cGxhdGUtc3RyZWFt/LXdlYi1jaGF0dGlu/Zy1vbmxpbmUtbWVl/dGluZy1mcmllbmRz/LXZpZGVvLWNoYXQt/Y29uZmVyZW5jZS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/YjhkdUZzUW5jdjRl/YnpCV0ROMGh0aDZR/RzRIcjNVUjRadmFv/X05Wb2RPRT0">
-                        <figcaption>
-                            <h5 >Video Call web Application<span></span></h5>
-                            <p class="icon-links">
-                                <a href="https://github.com/nidheesh146/video-call-project.git"><i class="fa fa-github"></i></a>
-                               
-                            </p>
-                        </figcaption>
-                    </div>
-                </div>
-                
-                
-            </div>	<!-- isotope portfolio-items -->
-            <!--<a href="#" class="btn btn-lg btn-view">
-                <i class="fa fa-eye"></i>
-                <span>View All</span>
-            </a>-->
-        </div>  <!-- content-block -->
-
-       <!--  <div class="content-block text-center" id="services">
-            <div class="overlay-2">
-                        <header class="block-heading cleafix">
-                            <h1>More About Me</h1>
-                            <p>Lorem Ipsum Text</p>
-                        </header>
-                        <div class="block-content">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                <div class="row ">
-                                    <div class="col-sm-4">
-                                        <h4 class="pro-stat">Completed Project</h4>
-                                        <h2 class="proj-name count1 count-timer" >020</h2>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="pro-stat">Working Project</h4>
-                                        <h2 class="proj-name count2">9</h2>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <h4 class="pro-stat">Top Rated Project</h4>
-                                        <h2 class="proj-name count3">015</h2>
-                                    </div>
-                                </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    overlay-2
-        </div>  --> <!-- content-block -->
-       <!-- <div id="services" class="content-block">
-            <div id="numbers" class="parallax">
-                <div class="overlay">
-                    <!-- title
-                    <div class="container-fluid numbers-title">
-                        <div class="container">
-                            <div class="row block-heading">
-                                <h1>Some Cool Facts About Me</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid">
-                        <!-- number list 
-                        <ul class="numbersList">
-                            <li class="col-md-2 col-sm-4 col-xs-6">
-                                <h4> Conferences </h4>
-                                <span id="number1" class="count1 count-timer">101</span>
-                            </li>
-                            <li class="col-md-2 col-sm-4 col-xs-6">
-                                <h4> Lines of Code</h4>
-                                <span id="number2" class="count2">92</span>
-                            </li>
-                            <li class="col-md-2 col-sm-4 col-xs-6">
-                                <h4> Hours of Work</h4>
-                                <span id="number3"  class="count3">54</span>
-                            </li>
-                            <li class="col-md-2 col-sm-4 col-xs-6">
-                                <h4> Repositories in Git</h4>
-                                <span id="number4" class="count4">99</span>
-                            </li>
-                            <li class="col-md-2 col-sm-4 col-xs-6">
-                                <h4> Mobile APP</h4>
-                                <span id="number5" class="count5">124</span>
-                            </li>
-                            <li class="col-md-2 col-sm-4 col-xs-6">
-                                <h4> Happy Client </h4>
-                                <span id="number6" class="count6">45</span>
-                            </li>
-                        </ul><!-- numbersList end 
-                    </div><!-- container-fluid end 
-                </div><!-- overlay end 
+    <section id="skills" class="section-padding container">
+        <h2 class="section-title">My <span class="text-gradient">Expertise</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card glass">
+                <i class="fa-brands fa-python skill-icon"></i>
+                <h4>Python</h4>
             </div>
-        </div>-->
+            <div class="skill-card glass">
+                <i class="fa-solid fa-gear skill-icon"></i>
+                <h4>Django</h4>
+            </div>
+            <div class="skill-card glass">
+                <i class="fa-brands fa-js skill-icon"></i>
+                <h4>JavaScript</h4>
+            </div>
+            <div class="skill-card glass">
+                <i class="fa-brands fa-html5 skill-icon"></i>
+                <h4>HTML5 / CSS3</h4>
+            </div>
+            <div class="skill-card glass">
+                <i class="fa-brands fa-bootstrap skill-icon"></i>
+                <h4>Bootstrap</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding container">
+        <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+        <div class="projects-grid">
             
-
-        <!--<div class="content-block" id="testimonials">
-            <header class="block-heading cleafix text-center">
-                <h1>What Clients Say</h1>
-                <!-- <p>Lorem Ipsum Text</p> 
-            </header>
-            <div class="block-content text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                        	<div class="owl-carousel">
-								<div class="owl-item">
-									<div class="testimonial">
-                                        <img alt="Client Photo" src="img/testimonial_31-190x190.jpg">
-                                        <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet.</p>
-                                        <strong>Jhon Doe</strong><br>
-                                        <span>Head of Ideas, Technext</span>
-                                    </div>
-								</div>	<!-- owl-item 
-								<div class="owl-item">
-									<div class="testimonial">
-                                        <img alt="Client Photo" src="img/testimonial_11-190x190.jpg">
-                                        <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet.</p>
-                                        <strong>Jane Doe</strong><br>
-                                        <span>CEO, Apple Inc</span>
-                                    </div>
-								</div>	<!-- owl-item 
-								<div class="owl-item">
-									<div class="testimonial">
-                                        <img alt="Client Photo" src="img/testimonial_22-190x190.jpg">
-                                        <p>In at accumsan risus. Nam id volutpat ante. Etiam vel mi mattis, vulputate nunc nec, sodales nibh. Etiam nulla magna, gravida eget ultricies sit amet.</p>
-                                        <strong>Albert Doe</strong><br>
-                                        <span>Team Lead, Design Studio</span>
-                                    </div>
-								</div>	<!-- owl-item 
-							</div>	<!-- owl-carousel 
-						</div>	<!-- col-md-12 
-                    </div>	<!-- row 
-                </div>	<!-- container 
-            </div>	<!-- block-content
-        </div>content-block -->
-
-        <div class="content-block" id="contact">
-            <div class="overlay-3">
-                <header class="block-heading cleafix text-center">
-                    <h1>Contact</h1>
-                    <!-- <p>Feel Free to Contact</p> -->
-                </header>
-                <div class="block-content text-center">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 wow animated fadeInLeft">
-                                <form class="contact-form" action="{% url 'contact' %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="text" name="name" placeholder="Name" required>
-                                    <input type="email" name="email" placeholder="Email" required>
-                                    <textarea rows="5" name="message" placeholder="Say Something..." required></textarea>
-                                    <input type="submit" value="Submit">
-                                </form>
-                            </div>
-                            <div class="col-md-6 wow animated fadeInRight">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="contact-info">
-                                            <div class="clearfix">
-                                                <div class="rotated-icon">
-                                                    <div class="sqaure-nebir"></div>
-                                                    <i class="fa fa-map-marker"></i>
-                                                </div>
-                                                <p><strong> Address:</strong>Mundur, Palakkad, Kerala
-                                                </p>
-                                            </div>
-                                            <div class="clearfix">
-                                                <div class="rotated-icon">
-                                                    <div class="sqaure-nebir"></div>
-                                                    <i class="fa fa-mobile"></i>
-                                                </div>
-                                                <p><strong> Cell No:</strong> 9562940776 </p>
-                                            </div>
-                                            <div class="clearfix">
-                                                <div class="rotated-icon">
-                                                    <div class="sqaure-nebir"></div>
-                                                    <i class="fa fa-envelope-o"></i>
-                                                </div>
-                                                <p>
-                                                    <strong> Email:</strong> nidheeshks@gmail.com
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <ul class="social-box">
-                                        <li><a class="linkedin-icon" href="http://linkedin.com/in/nidheesh-ks-33017a234"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+            <div class="project-card">
+                <img src="https://imgs.search.brave.com/5OryE1oH0wYQD50vmzCopt7cI2Ny-m-M59tObMMPXtA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWct/Y2RuLnRoZXB1Ymxp/dmUuY29tL2ZpbHRl/cnM6Zm9ybWF0KHdl/YnApL2luZHVzdHJ5/LXdpcmVkL21lZGlh/L3Bvc3RfYXR0YWNo/bWVudHMvd3AtY29u/dGVudC91cGxvYWRz/LzIwMjQvMDgvVGhl/LUZ1dHVyZS1vZi1B/SS1pbi1TbWFydC1I/b21lcy5qcGc" alt="AI Smart Living">
+                <div class="project-overlay">
+                    <h3>AI Enhanced Smart Living</h3>
+                    <div class="project-links">
+                        <a href="{% static 'img/ai.jpg' %}" target="_blank" title="View Full Image"><i class="fa-solid fa-image"></i></a>
                     </div>
-                </div>	<!-- block-content -->
-            </div>	<!-- overlay-3 -->
-        </div>	
-
-        <footer id="site-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="copyright">&copy; 2025</div>
-                    </div>
-                   
                 </div>
             </div>
-        </footer>	<!-- site-footer -->
 
+            <div class="project-card">
+                <img src="https://imgs.search.brave.com/fnYKebuht-54bLzTYXeKt9MoFRKCRYNRay0Mv2SwSY0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTgz/MDA0Mjc0Ni9waG90/by9kb2N1bWVudC1t/YW5hZ2VtZW50LXN5/c3RlbS1kbXMtd2l0/aC1hcnJhbmdlLWZv/bGRlci1hbmQtZmls/ZXMtaWNvbnMtbWFu/LXNldHVwLXN0b3Jh/Z2UtYmFja3VwLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz10/OG9BQU8xNmo2Zk1o/bGVBWUpFWG01cFNY/RklEWnJFRzZzWUpr/dl9TZG9zPQ" alt="IT Management">
+                <div class="project-overlay">
+                    <h3>IT Employee Management</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/nidheesh146/IT-management-system.git" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
 
-        <!-- js -->
-        <script>
-            new WOW().init();
-        </script>
+            <div class="project-card">
+                <img src="https://imgs.search.brave.com/Q7AQktDyDBO8Oi5S7KNjHJV1Tz4164GfaTJOvVOa7rg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/aGFzaG1pY3JvLmNv/bS9ibG9nL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIzLzAzL3R1/aXRpb24tNjk2eDM3/Ny5wbmc" alt="Tuition Management">
+                <div class="project-overlay">
+                    <h3>Tuition Management System</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/nidheesh146/Tution-Center-Management-system.git" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
 
-        <script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/jquery.actual.min.js' %}"></script>
-        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
-        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-        <script src="{% static 'js/jquery.isonscreen.js' %}"></script>
-       
-        <script src="{% static 'js/main.js' %}"></script>
+            <div class="project-card">
+                <img src="https://imgs.search.brave.com/A7thdLPieL_5dR1X-zHi3Emc5XnYwG0I6d2pnEjS7Zc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9vcGVu/c291cmNlLmNvbS9z/aXRlcy9kZWZhdWx0/L2ZpbGVzL3N0eWxl/cy9hcnRpY2xlX3Rl/YXNlci9wdWJsaWMv/bGVhZC1pbWFnZXMv/ZW1haWxfY2hhdF9j/b21tdW5pY2F0aW9u/X21lc3NhZ2UucG5n/P2l0b2s9T19ObUNF/ZGE" alt="Chat System">
+                <div class="project-overlay">
+                    <h3>Real-time Chat App</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/nidheesh146/Public-Chat-system.git" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
 
-        <script>
-        	$(document).ready(function(){
-  				$('.owl-carousel').owlCarousel({
-    				loop:true,
-    				margin:10,
-    				autoplay:true,
-    				autoplayTimeout:3000,
-    				autoplayHoverPause:true,
-    				responsiveClass:true,
-    				responsive:{
-        					0:{
-					            items:1,
-        					},
-					        600:{
-					            items:1,
-					        },
-					        1000:{
-					            items:1,
-					        }
-    				}
-				})
-			});
-        </script>
+            <div class="project-card">
+                <img src="https://imgs.search.brave.com/xSZDDKo_2JVk7KlYAAHMZEHsdCO4XKT2JPprdjEE-4g/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzVk/MzIyNWE2ODQ2OTQx/MDAwMTNjMmE0Yy9h/ODVlOTc2Ny0yOGYy/LTQ2ZmItYmJhMS0w/Njk3MTc4MDc0MzAv/d2hpdGUrJTI4aW52/ZXJ0JTI5K2tleWxv/Z28rc2lnbi5qcGc" alt="Campus Management">
+                <div class="project-overlay">
+                    <h3>Campus Management</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/nidheesh146/campus-management-system.git" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
 
-	</body>
+            <div class="project-card">
+                <img src="https://imgs.search.brave.com/qfwwIItqmAY8WxXmnBagrPbp3e1EtdAlis__uoRnvWA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI4/MTc5MTE5NC92ZWN0/b3IvdmlkZW8tY2Fs/bC1zY3JlZW4tdGVt/cGxhdGUtc3RyZWFt/LXdlYi1jaGF0dGlu/Zy1vbmxpbmUtbWVl/dGluZy1mcmllbmRz/LXZpZGVvLWNoYXQt/Y29uZmVyZW5jZS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/YjhkdUZzUW5jdjRl/YnpCV0ROMGh0aDZR/RzRIcjNVUjRadmFv/X05Wb2RPRT0" alt="Video Call">
+                <div class="project-overlay">
+                    <h3>Video Calling App</h3>
+                    <div class="project-links">
+                        <a href="https://github.com/nidheesh146/video-call-project.git" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding container">
+        <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+        <div class="contact-container glass" style="padding: 3rem;">
+            
+            <div class="contact-info">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Let's build something awesome together!</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Feel free to reach out for collaborations, job opportunities, or just a friendly chat.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem;">Location</h4>
+                        <p style="color: var(--text-secondary);">Mundur, Palakkad, Kerala</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem;">Phone</h4>
+                        <p style="color: var(--text-secondary);">+91 9562940776</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <h4 style="margin-bottom: 0.2rem;">Email</h4>
+                        <p style="color: var(--text-secondary);">nidheeshks@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1rem;">
+                    <a href="http://linkedin.com/in/nidheesh-ks-33017a234" target="_blank" class="info-icon" style="display: inline-flex; text-decoration: none; width: 45px; height: 45px; transition: transform 0.3s;">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <form class="contact-form" action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" name="message" placeholder="Say Something..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nidheesh KS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
 </html>
