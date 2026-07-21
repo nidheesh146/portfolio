@@ -20,14 +20,18 @@ def contact_view(request):
 
         full_message = f"Message from {name} <{email}>:\n\n{message}"
 
-        send_mail(
-            subject='New Contact Form Submission',
-            message=full_message,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[settings.EMAIL_HOST_USER],  # send to yourself
-            fail_silently=False,
-        )
-        messages.success(request,'Your message has been sent!')
+        try:
+            send_mail(
+                subject='New Contact Form Submission',
+                message=full_message,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[settings.EMAIL_HOST_USER],  # send to yourself
+                fail_silently=False,
+            )
+            messages.success(request,'Your message has been sent!')
+        except Exception as e:
+            messages.error(request, 'Failed to send message. Please email me directly or try again later.')
+        
         return redirect('index_view')
 
     return render(request, 'contact.html')  
