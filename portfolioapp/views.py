@@ -21,16 +21,30 @@ def contact_view(request):
         full_message = f"Message from {name} <{email}>:\n\n{message}"
 
         def send_email_task():
+            import requests
             try:
-                send_mail(
-                    subject='New Contact Form Submission',
-                    message=full_message,
-                    from_email=settings.EMAIL_HOST_USER,
-                    recipient_list=[settings.EMAIL_HOST_USER],
-                    fail_silently=False,
-                )
+                resend_api_key = getattr(settings, 'RESEND_API_KEY', '')
+                if not resend_api_key:
+                    print("Failed to send email: RESEND_API_KEY is not configured in settings.")
+                    return
+                
+                headers = {
+                    'Authorization': f'Bearer {resend_api_key}',
+                    'Content-Type': 'application/json',
+                }
+                
+                data = {
+                    "from": "onboarding@resend.dev",
+                    "to": [settings.EMAIL_HOST_USER], # Send it to your own email
+                    "subject": "New Portfolio Contact Form Submission",
+                    "text": full_message,
+                }
+                
+                response = requests.post('https://api.resend.com/emails', headers=headers, json=data)
+                response.raise_for_status()
+                print("Email sent successfully via Resend!")
             except Exception as e:
-                print(f"Failed to send email: {e}")
+                print(f"Failed to send email via Resend: {e}")
 
         import threading
         email_thread = threading.Thread(target=send_email_task)
